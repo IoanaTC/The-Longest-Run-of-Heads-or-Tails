@@ -8,14 +8,23 @@
 #
 
 library(shiny)
+library(bslib)
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
-  
+    
+    # stabilirea unei teme pentru ui
+    theme = bs_theme(
+      version = 4, 
+      bootswatch = "minty"
+    ),
+    
     tags$head(tags$link(rel = "icon", type = "image/x-icon", 
                         href = "https://o.remove.bg/downloads/ff8780c1-3a97-4150-9093-822aa4576925/pngtree-vector-coins-icon-dollar-gold-coin-png-image_2462733-removebg-preview.png")),
     
-    tags$title("Longest run of heads or tails"),
+    tags$title(class="text-center bg-succes text-muted", "Longest run of heads or tails"),
+    br(),
+    
     # Application title
     titlePanel("The Longest Run of Heads or Tails"),
 
@@ -31,7 +40,13 @@ ui <- fluidPage(
 
         # Show a plot of the generated distribution
         mainPanel(
-           plotOutput("distPlot")
+          mainPanel(
+            tabsetPanel(
+              tabPanel("Plot", plotOutput("plot")), 
+              tabPanel("Summary", verbatimTextOutput("summary")), 
+              tabPanel("Table", tableOutput("table"))
+            )
+          )
         )
     )
 )
