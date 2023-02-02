@@ -38,7 +38,7 @@ ui <- fluidPage(
             sliderInput("trials",
                         label = h5("Numarul de aruncari cu banul:"),
                         min = 10,
-                        max = 400,
+                        max = 200,
                         step = 10,
                         value = 200), br(),
             
@@ -68,8 +68,20 @@ ui <- fluidPage(
         ),
         # Show a plot of the generated distribution
         mainPanel(
+          
           tabsetPanel(type = "tab",
-                      tabPanel("Experiment", plotOutput("experiment")),
+                      tabPanel("Experiment", plotOutput("experiment"),
+                      p("The two sequences shown below each purportedly represent the results of 200 tosses
+        of a fair coin. One of these is an actual sequence obtained from coin tossing, while 
+        the other sequence is artificial. Can you decide, in sixty seconds or less, which of 
+        the sequences is more likely to have arisen from actual coin tossing and which one is
+        the imposter?" ,style="margin-top:-10px"),
+                               p("Sequence #1", style = "text-align: center;text-decoration: underline"),
+                               p("T HHH HT T T T HHH HT H HHHHHH HT T THHT T HHHH HT T T T T T HHT HHT HHH T T T HT T HH HHT HT T T HT T T HHT T T T HHHH HHT T T HHT T HHHT HHHHHT T T T T HT T T HHT T HT T HHT T T HHT T T HH THHT HHT T T T T HHT HH HH HHT HT HT T HT HT T H HHT T HHT HT HH HH HH HHT THT T HHHT H HT T HT T T T T T HHHT HHH"),
+                               p("Sequence #2", style = "text-align: center;text-decoration: underline;"),
+                               p("T HT HT T T HT T T T T HT HT T T HT T HHHT HHT HT HT HT T T T HHT T HHT T HHH T HHHT T H HHT T T HHHT HHH HT T T HT HT HH HHT HT T T HHHT HHT HT T T HHT H HHT HHH HT T HT HHT H HHT T T HT HHHT HHT T T HHHT T T T HHHT HT H HHHT H TT HHT T T T HT HT HT T HT HHT T HT T THT T T T H HH HT HT HHHT T HH HH HT HH"),
+                               p("Schilling, M. 'The Longest Run of Heads' - The College Mathematics Journal; 21(3), 196--207")),
+                      
                       tabPanel("Documentatie", htmlOutput("documentatie")),
                       tabPanel("Table", tableOutput("table"))
           )
