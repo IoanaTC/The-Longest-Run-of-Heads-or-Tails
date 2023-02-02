@@ -107,15 +107,15 @@ plot.gen <- function(minlength, mydata){
     # for each toss in particular
     for (i in 1:nrow(mydata)){
       # we verify if the result is "Heads", or "Tails"
-      my.coin <-coords[i,1]
+      my.coin <-mydata[i,1]
       if(my.coin == 1){
         #Heads
         
         # we check if the current toss is part of a streak
         # if it is, we color it red
-        if(mydata[i,3]>=minlength)
+        if(is.na(mydata[i,3]>=minlength))
             text(mydata[i,4], mydata[i,5], "H",
-                 col="teal", font = 2)
+                 col="red", font = 2)
         else 
           text(mydata[i,4],mydata[i,5],"H")}
       }

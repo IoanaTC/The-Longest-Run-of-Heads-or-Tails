@@ -85,7 +85,7 @@ options(shiny.error = browser)
 server <- function(input, output) {
     
     dataInput <- reactive({
-      tosses.gen(input&trials*(input$start>-1), 0.5)
+      tosses.gen(input$trials*(input$start>-1), 0.5)
     })
     
     output$experiment <- renderPlot({
