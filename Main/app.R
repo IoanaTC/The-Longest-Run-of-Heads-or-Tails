@@ -40,7 +40,7 @@ ui <- fluidPage(
                         min = 10,
                         max = 400,
                         step = 10,
-                        value = 20), br(),
+                        value = 200), br(),
             
             div("Selectati numarul de aruncari total pe care il preferati pentru experimentul curent",
                 style = "font-size: 11pt;color:teal",align="right"), br(),

@@ -50,14 +50,16 @@ tosses.gen <- function(trials,prob){
   curr<-1
   mydata[1,3] <- all_Runs[curr]
   
-  while(val <= length(mydata)){
+  while(val <= nrow(mydata)){
     i1 <- mydata[val-1,2]
     i2 <- mydata[val,2]
+    
     if (i1 == i2) {
       mydata[val,3] <- all_Runs[curr]}
     else {
       curr <- curr + 1 
       mydata[val,3] <- all_Runs[curr]}
+    
     val <- val + 1
   }
   
@@ -105,23 +107,23 @@ plot.gen <- function(minlength, mydata){
     
     
     # for each toss in particular
-    for (i in 1:nrow(mydata)){
+    for (index in 1:nrow(mydata)){
       # we verify if the result is "Heads", or "Tails"
-      my.coin <-mydata[i,1]
+      my.coin <-mydata[index,1]
       if(my.coin == 1){
         #Heads
         
         # we check if the current toss is part of a streak
         # if it is, we color it red
-        if(is.na(mydata[i,3]>=minlength))
-            text(mydata[i,4], mydata[i,5], "H",
-                 col="red", font = 2)
-        else 
-          text(mydata[i,4],mydata[i,5],"H")}
+        if(mydata[index,3]>=minlength) text(mydata[index,4], mydata[index,5], "H", col="red", font = 2, cex = 2)
+        else text(mydata[index,4],mydata[index,5],"H", cex = 2)
+      
       }
+      
       if(my.coin == 0){
         # Tails
-        text(mydata[i,4],mydata[i,5],"T")
+        text(mydata[index,4],mydata[index,5],"T", cex = 2)
       }
       
     }
+}
